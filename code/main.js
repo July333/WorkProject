@@ -35,7 +35,6 @@ $('#home').on('click', function () {
     });
 });
 function getLocation(callback) {
-    debugger;
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(callback, function () { }, {
             enableHighAccuracy: true
