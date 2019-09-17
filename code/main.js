@@ -2,7 +2,7 @@
 const apiId = '7a330d30a698e17be279ad095370f739'; //my key
 //current temp by city name
 const getApi = async (selectedCity) => {
-    const res = await fetch('http://api.openweathermap.org/data/2.5/weather?q='
+    const res = await fetch('https://api.openweathermap.org/data/2.5/weather?q='
         + selectedCity
         + '&units=metric&appid=' + apiId);
     const cityWeather = await res.json();
@@ -45,7 +45,7 @@ function getLocation(callback) {
     }
 }
 const getLocApi = async (lat, lon) => {
-    const res = await fetch('http://api.openweathermap.org/data/2.5/weather?'
+    const res = await fetch('https://api.openweathermap.org/data/2.5/weather?'
         + 'lat=' + lat + '&lon=' + lon
         + '&units=metric&appid='
         + apiId);
@@ -58,7 +58,7 @@ const getLocApi = async (lat, lon) => {
 }
 //future temp
 const getHisApi = async (selectedCity) => {
-    const res = await fetch('http://api.openweathermap.org/data/2.5/forecast?q='
+    const res = await fetch('https://api.openweathermap.org/data/2.5/forecast?q='
         + selectedCity
         + '&units=metric&appid=' + apiId);
     const cityWeather = await res.json();
