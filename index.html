@@ -1,14 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Weather</title>
     <link rel="stylesheet" href="resources/bootstrap.min.css">
-    <script src="resources/jquery.min.js"></script>
+    <link rel="stylesheet" href="style/style.css">
 </head>
+
 <body>
-    <h1>hello</h1>
+    <header class="container">
+        <div class="name jumbotron">
+            <h1>Weather</h1>
+            <img id="sideIm" src="images/images.png">
+        </div>
+        <nav class="navbar navbar-expand-lg sticky-top row">
+            <div class="col-auto nav mr-auto nav-pills nav-justified" id="navbar">
+                <a class="nav-link" href="#" id="home">Home</a>
+                <a class="nav-link" href="#" id="myMap">Map</a>
+                <a class="nav-link" href="#" id="about">About</a>
+            </div>
+            <div class="col-auto row">
+                <input id="inp" class="col-auto form-control col-8" placeholder="Search by city">
+                <button id="search" class="col-auto btn btn-outline-success">Search</button>
+            </div>
+        </nav>
+    </header>
+    <section class="container">
+        <div id='weather' class="col-auto card border-info mb-3">
+            <div id="n1" class="card-header">City name is: </div>
+            <div class="card-body">
+                <h5 id="n2" class="card-subtitle">The current temperature is: </h5> 
+                <p class="card-text"></p>
+            </div>
+        </div>
+    </section>
+    <script src="resources/jquery.min.js"></script>
+    <script src='code/main.js'></script>
 </body>
+
 </html>
