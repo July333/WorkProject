@@ -59,7 +59,7 @@ const futureWeatherForLoc = async (lat, lon) => {
         </div>
         `;
     }
-    $('#arr').empty();
-    $('#arr').append(temp);
+    //$('#arr').empty();
+    //$('#arr').append(temp);
 }
 //main: "Clouds", description: "broken clouds", icon: "04n"}
