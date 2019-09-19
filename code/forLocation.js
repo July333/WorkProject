@@ -30,8 +30,11 @@ const getLocApi = async (lat, lon) => {
         + '&units=metric&appid='
         + apiId);
     const cityWeather = await res.json();
-    $('#n1').text("City name is: " + cityWeather.name.toUpperCase());
-    $('#n2').text("The current temperature is: " + cityWeather.main.temp + "°C");
+    $('#n1 span').text(cityWeather.name.toUpperCase());
+    $('#n2 span').text(cityWeather.main.temp);
+    $('#n3 #w').text(cityWeather.weather[0].description);
+    $('#n3 #wi').text(cityWeather.wind.speed + ' km/h');
+    $('#n4').attr('src', 'http://openweathermap.org/img/wn/' + cityWeather.weather[0].icon + '@2x.png');
     return cityWeather;
 }
 
@@ -46,20 +49,38 @@ const getHisApiForLoc = async (lat, lon) => {
 }
 const futureWeatherForLoc = async (lat, lon) => {
     arr = await getHisApiForLoc(lat, lon);
-    console.log(arr);
-    let temp = '';
-    for (let i = 0; i < arr.length; i++) {
-        temp += `
-        <div class="col-auto card border-info mb-3 tempCard">
-            <div class="card-header">The current temperature is: ${arr[i].main.temp}</div>
-            <div class="card-body">
-                <h5 id="n" class="card-subtitle">The current temperature is: ${arr[i].weather[0].main}</h5> 
-                <p class="card-text"></p>
-            </div>
-        </div>
-        `;
+    let date = arr[0].dt_txt;
+    date = date.split(' ');
+    let place = date[1].split(':')[0];
+    place /= 6;
+    let i = 0;
+    if ((place % Math.ceil(place)) != 0) {
+        i++;
+        place = Math.ceil(place);
     }
-    //$('#arr').empty();
-    //$('#arr').append(temp);
+    let inx;
+    console.log(arr);
+    for (let j = 1; j < 5; j++) {
+        let d = new Date();
+        d.setDate(d.getDate() + j - 1);
+        $('#day' + j).text(d.toLocaleString("en-US", { weekday: 'long' })+' '+d.getDate()+'/'+d.getMonth());
+    }
+    let str = '';
+    for (i; i < arr.length - 6; i = i + 2) {
+        inx = Math.floor(i / 2) + place;
+        str = `<img src="http://openweathermap.org/img/wn/${arr[i].weather[0].icon}@2x.png" alt="image">
+        <div>
+            Temperature is: <strong>${arr[i].main.temp} °C</strong>
+            <br />
+            The weather is: <strong>${arr[i].weather[0].description} </strong>
+            <br />
+            The wind speed is: <strong>${arr[i].wind.speed} km/h</strong>
+        </div>`;
+        $('#d' + inx).html(str);
+        // $('#d' + inx+' img').attr('src','http://openweathermap.org/img/wn/'+arr[i].weather[0].icon+'@2x.png');
+        // $('#d' + inx+' div strong:nth-child(1)').text(arr[i].main.temp+' °C');
+        // $('#d' + inx+' div strong:nth-child(2)').text(arr[i].weather[0].description);
+        // $('#d' + inx+' div strong:last-child()').text(arr[i].wind.speed+' km/h');
+    }
 }
-//main: "Clouds", description: "broken clouds", icon: "04n"}
+

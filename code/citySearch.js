@@ -7,8 +7,11 @@ const getApi = async (selectedCity) => {
         + selectedCity
         + '&units=metric&appid=' + apiId);
     const cityWeather = await res.json();
-    $('#n1').text("City name is: " + selectedCity.toUpperCase());
-    $('#n2').text("The current temperature is: " + cityWeather.main.temp + "°C");
+    $('#n1 span').text(cityWeather.name.toUpperCase());
+    $('#n2 span').text(cityWeather.main.temp);
+    $('#n3 #w').text(cityWeather.weather[0].description);
+    $('#n3 #wi').text(cityWeather.wind.speed+' km/h');
+    $('#n4').attr('src','http://openweathermap.org/img/wn/'+cityWeather.weather[0].icon+'@2x.png');
     return cityWeather;
 }
 $('#search').on('click', function () {
@@ -26,42 +29,36 @@ const getHisApi = async (selectedCity) => {
 }
 const futureWeather = async (selectedCity) => {
     arr = await getHisApi(selectedCity);
-    //let date=arr[i].dt_txt;
-    let temp = '';
-    //let day=new Date().getDay();
     let date = arr[0].dt_txt;
     date = date.split(' ');
     let place = date[1].split(':')[0];
     place /= 6;
-    let j = 0;
+    let i = 0;
         if((place%Math.ceil(place)) != 0){
-            j++;
+            i++;
             place=Math.ceil(place);
         }
-    console.log(place);
     let inx;
-    console.log(arr);
-    for (let i=j; i < arr.length-6; i=i+2) {
-        // let date = arr[i].dt_txt;
-        // date = date.split(' ');
-        // let day = date[0].split('-')[3];
-        // console.log(date);
-        inx = Math.floor(i/2) + place;
-        console.log(i+' '+inx);
-        $('#d' + inx).text(arr[i].main.temp);
-        console.log(i+' '+arr[i].main.temp);
-        // temp += `
-        // <div class="col-auto card border-info mb-3 tempCard">
-        //     <div class="card-header">The current temperature is: ${arr[i].main.temp}</div>
-        //     <div class="card-body">
-        //         <h5 id="n" class="card-subtitle">The current temperature is: ${arr[i].weather[0].main}</h5> 
-        //         <p class="card-text"></p>
-        //     </div>
-        // </div>
-        // `;
+    for ( let j=1; j < 5; j++) {
+        let d=new Date();
+        d.setDate(d.getDate() + j - 1);
+        $('#day' + j).text(d.toLocaleString("en-US", { weekday: 'long' })+' '+d.getDate()+'/'+d.getMonth());
     }
-    //$('#arr').empty();
-    //$('#arr').append(temp);
+    let str='';
+    for ( i; i < arr.length-6; i=i+2) {
+        inx = Math.floor(i/2) + place;
+        str=`<img src="http://openweathermap.org/img/wn/${arr[i].weather[0].icon}@2x.png" alt="image">
+        <div>
+            Temperature is: <strong>${arr[i].main.temp} °C</strong>
+            <br />
+            The weather is: <strong>${arr[i].weather[0].description} </strong>
+            <br />
+            The wind speed is: <strong>${arr[i].wind.speed} km/h</strong>
+        </div>`;
+        $('#d' + inx).html(str);
+        // $('#d' + inx+' img').attr('src','http://openweathermap.org/img/wn/'+arr[i].weather[0].icon+'@2x.png');
+        // $('#d' + inx+' div strong:nth-child(1)').text(arr[i].main.temp+' °C');
+        // $('#d' + inx+' div strong:nth-child(2)').text(arr[i].weather[0].description);
+        // $('#d' + inx+' div strong:last-child()').text(arr[i].wind.speed+' km/h');
+    }
 }
-
-
