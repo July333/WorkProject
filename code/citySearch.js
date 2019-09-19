@@ -19,7 +19,7 @@ $('#search').on('click', function () {
     getApi(city);
     futureWeather(city);
 });
-
+//forecast weather
 const getHisApi = async (selectedCity) => {
     const res = await fetch('https://api.openweathermap.org/data/2.5/forecast?q='
         + selectedCity
@@ -56,9 +56,5 @@ const futureWeather = async (selectedCity) => {
             The wind speed is: <strong>${arr[i].wind.speed} km/h</strong>
         </div>`;
         $('#d' + inx).html(str);
-        // $('#d' + inx+' img').attr('src','http://openweathermap.org/img/wn/'+arr[i].weather[0].icon+'@2x.png');
-        // $('#d' + inx+' div strong:nth-child(1)').text(arr[i].main.temp+' °C');
-        // $('#d' + inx+' div strong:nth-child(2)').text(arr[i].weather[0].description);
-        // $('#d' + inx+' div strong:last-child()').text(arr[i].wind.speed+' km/h');
     }
 }

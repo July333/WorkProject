@@ -1,12 +1,46 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+}
+header #head {
+  overflow: hidden;
+  padding-bottom: 0%;
+}
+h1 {
+  width: 75%;
+  display: inline-block;
+}
 #sideIm {
   float: right;
   width: 20%;
+  max-width: 120px;
+}
+.myCard #weather {
+  padding: 0px;
+  max-width: 560px;
+}
+#n4 {
+  width: 25%;
+  display: block;
+  float: left;
+}
+.card-subtitle {
+  padding-top: 10%;
+}
+.card-body {
+  width: 70%;
+  display: inline-block;
+  padding: 2%;
+  padding-top: 5%;
+  overflow: hidden;
 }
 .grid-container {
   display: grid;
   grid-template-rows: auto auto auto auto auto;
-  padding: 10px;
+  padding: 5px;
   grid-auto-flow: column;
+  width: 100%;
 }
 .grid-item {
   background-color: rgba(255, 255, 255, 0.8);
@@ -14,8 +48,4 @@
   padding: 20px;
   font-size: 30px;
   text-align: center;
-}
-#n4 {
-  width: 15%;
-  display: block;
 }

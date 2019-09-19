@@ -37,8 +37,7 @@ const getLocApi = async (lat, lon) => {
     $('#n4').attr('src', 'http://openweathermap.org/img/wn/' + cityWeather.weather[0].icon + '@2x.png');
     return cityWeather;
 }
-
-//future temp
+//forecast weather
 const getHisApiForLoc = async (lat, lon) => {
     const res = await fetch('https://api.openweathermap.org/data/2.5/forecast?'
         + 'lat=' + lat + '&lon=' + lon
@@ -77,10 +76,5 @@ const futureWeatherForLoc = async (lat, lon) => {
             The wind speed is: <strong>${arr[i].wind.speed} km/h</strong>
         </div>`;
         $('#d' + inx).html(str);
-        // $('#d' + inx+' img').attr('src','http://openweathermap.org/img/wn/'+arr[i].weather[0].icon+'@2x.png');
-        // $('#d' + inx+' div strong:nth-child(1)').text(arr[i].main.temp+' °C');
-        // $('#d' + inx+' div strong:nth-child(2)').text(arr[i].weather[0].description);
-        // $('#d' + inx+' div strong:last-child()').text(arr[i].wind.speed+' km/h');
     }
 }
-

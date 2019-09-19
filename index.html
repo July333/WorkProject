@@ -12,9 +12,9 @@
 
 <body>
     <header class="container">
-        <div class="name jumbotron">
+        <div class="head name jumbotron">
             <h1>Weather</h1>
-            <img id="sideIm" src="images/images.png">
+            <img id="sideIm" src="images/images.png" class="img-circle" alt="Cinque Terre">
         </div>
         <nav class="navbar navbar-expand-lg sticky-top row">
             <div class="col-auto nav mr-auto nav-pills nav-justified" id="navbar">
@@ -28,11 +28,12 @@
             </div>
         </nav>
     </header>
-    <section class="container">
+    <section class="myCard container">
         <div id='weather' class="col-auto card border-info mb-3">
             <div id="n1" class="card-header">City name is: <span></span></div>
-            <img id="n4" src="" alt="Card image">
+            <!--  <div id="imD"></div> alt="Card image"!-->
             <div class="card-body">
+                <img id="n4" src="">
                 <h5 id="n2" class="card-subtitle">The current temperature is: <span></span> °C</h5>
                 <p id="n3" class="card-text">
                     The weather is: <strong id="w"></strong>
@@ -50,16 +51,7 @@
             <div>18:00</div>
             <div>24:00</div>
             <div id="day1">Today</div>
-            <div id="d1" class="grid-item">1
-                <!--<img src="" alt="image">
-                <div>
-                    Temperature is: <strong></strong>
-                    <br />
-                    The weather is: <strong></strong>
-                    <br />
-                    The wind speed is: <strong></strong>
-                </div> !-->
-            </div>
+            <div id="d1" class="grid-item">1</div>
             <div id="d2" class="grid-item">2</div>
             <div id="d3" class="grid-item">3</div>
             <div id="d4" class="grid-item">4</div>
