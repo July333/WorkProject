@@ -39,22 +39,16 @@ const futureWeather = async (selectedCity) => {
             place=Math.ceil(place);
         }
     let inx;
-    for ( let j=1; j < 5; j++) {
-        let d=new Date();
-        d.setDate(d.getDate() + j - 1);
-        $('#day' + j).text(d.toLocaleString("en-US", { weekday: 'long' })+' '+d.getDate()+'/'+d.getMonth());
-    }
     let str='';
     for ( i; i < arr.length-6; i=i+2) {
         inx = Math.floor(i/2) + place;
-        str=`<img src="http://openweathermap.org/img/wn/${arr[i].weather[0].icon}@2x.png" alt="image">
-        <div>
-            Temperature is: <strong>${arr[i].main.temp} °C</strong>
-            <br />
-            The weather is: <strong>${arr[i].weather[0].description} </strong>
-            <br />
-            The wind speed is: <strong>${arr[i].wind.speed} km/h</strong>
-        </div>`;
+        str = `<div col-auto><img src="http://openweathermap.org/img/wn/${arr[i].weather[0].icon}@2x.png" alt="image" class="inIM img-responsive"></div>
+<div class="col-auto cur">
+<strong>${arr[i].dt_txt.split(' ')[1]}</strong>
+<br />Temperature is: <strong>${arr[i].main.temp}°C</strong>
+<br />The weather is: <strong>${arr[i].weather[0].description} </strong>
+<br />The wind speed is: <strong>${arr[i].wind.speed} km/h</strong>
+</div>`;
         $('#d' + inx).html(str);
     }
 }

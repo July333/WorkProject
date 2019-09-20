@@ -34,7 +34,7 @@
             <!--  <div id="imD"></div> alt="Card image"!-->
             <div class="card-body">
                 <img id="n4" src="">
-                <h5 id="n2" class="card-subtitle">The current temperature is: <span></span> °C</h5>
+                <h5 id="n2" class="card-subtitle">The current temperature is: <span></span>°C</h5>
                 <p id="n3" class="card-text">
                     The weather is: <strong id="w"></strong>
                     <br />
@@ -45,34 +45,42 @@
     </section>
     <section id="arr" class="container raw">
         <div class="grid-container">
-            <div>1+2</div>
-            <div>06:00</div>
-            <div>12:00</div>
-            <div>18:00</div>
-            <div>24:00</div>
-            <div id="day1">Today</div>
-            <div id="d1" class="grid-item">1</div>
-            <div id="d2" class="grid-item">2</div>
-            <div id="d3" class="grid-item">3</div>
-            <div id="d4" class="grid-item">4</div>
-
-            <div id="day2">1</div>
-            <div id="d5" class="grid-item">5</div>
-            <div id="d6" class="grid-item">6</div>
-            <div id="d7" class="grid-item">7</div>
-            <div id="d8" class="grid-item">8</div>
-
-            <div id="day3">1</div>
-            <div id="d9" class="grid-item">9</div>
-            <div id="d10" class="grid-item">10</div>
-            <div id="d11" class="grid-item">11</div>
-            <div id="d12" class="grid-item">12</div>
-
-            <div id="day4">1</div>
-            <div id="d13" class="grid-item">13</div>
-            <div id="d14" class="grid-item">14</div>
-            <div id="d15" class="grid-item">15</div>
-            <div id="d16" class="grid-item">16</div>
+            <div id="day1" class="grid-item">
+                <button class="myB btn btn-info">More info</button>
+                <div class="infoM" style="display: none;">
+                    <div id="d1" class="hour row"></div>
+                    <div id="d2" class="hour row"></div>
+                    <div id="d3" class="hour row"></div>
+                    <div id="d4" class="hour row"></div>
+                </div>
+            </div>
+            <div id="day2" class="grid-item">
+                <button class="myB btn btn-info">More info</button>
+                <div class="infoM" style="display: none;">
+                    <div id="d5" class="hour row">5</div>
+                    <div id="d6" class="hour row">6</div>
+                    <div id="d7" class="hour row">7</div>
+                    <div id="d8" class="hour row">8</div>
+                </div>
+            </div>
+            <div id="day3" class="grid-item">
+                <button class="myB btn btn-info">More info</button>
+                <div class="infoM" style="display: none;">
+                    <div id="d9" class="hour row">9</div>
+                    <div id="d10" class="hour row">10</div>
+                    <div id="d11" class="hour row">11</div>
+                    <div id="d12" class="hour row">12</div>
+                </div>
+            </div>
+            <div id="day4" class="grid-item">
+                <button class="myB btn btn-info">More info</button>
+                <div class="infoM" style="display: none;">
+                    <div id="d13" class="hour row">13</div>
+                    <div id="d14" class="hour row">14</div>
+                    <div id="d15" class="hour row">15</div>
+                    <div id="d16" class="hour row">16</div>
+                </div>
+            </div>
         </div>
     </section>
     <script src="resources/jquery.min.js"></script>
