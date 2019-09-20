@@ -71,7 +71,7 @@ const futureWeatherForLoc = async (lat, lon) => {
     let str = '';
     for (i; i < arr.length - 6; i = i + 2) {
         inx = Math.floor(i / 2) + place;
-        str = `<div class="inIM col-auto"><img src="http://openweathermap.org/img/wn/${arr[i].weather[0].icon}@2x.png" alt="image" class="inIM img-responsive"></div>
+        str = `<div class="inIM col-auto"><img src="https://openweathermap.org/img/wn/${arr[i].weather[0].icon}@2x.png" alt="image" class="inIM img-responsive"></div>
         <div class="col-auto cur">
 <strong>${arr[i].dt_txt.split(' ')[1]}</strong>
 <br />Temperature is: <strong>${arr[i].main.temp}°C</strong>
