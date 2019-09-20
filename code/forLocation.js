@@ -17,7 +17,11 @@ $(document).ready(function () {
         }
     });
 });
-$('#home').on('click', function () {
+$('#home').on('click', function () { 
+    $("#chartContainer").css("visibility", "hidden");
+    $("section").css("visibility", "visible");
+    $("section").css("position", "relative");
+    $("#myAbout").css("visibility", "hidden");
     getLocation(function (position) {
         const lat = position.coords.latitude;
         const lon = position.coords.longitude;
@@ -31,7 +35,7 @@ function getLocation(callback) {
             enableHighAccuracy: true
         });
     } else {
-        console.log("Geolocation is not supported by this browser.");
+        alert("Geolocation is not supported by this browser.");
     }
 }
 const getLocApi = async (lat, lon) => {
@@ -44,7 +48,7 @@ const getLocApi = async (lat, lon) => {
     $('#n2 span').text(cityWeather.main.temp);
     $('#n3 #w').text(cityWeather.weather[0].description);
     $('#n3 #wi').text(cityWeather.wind.speed + ' km/h');
-    $('#n4').attr('src', 'http://openweathermap.org/img/wn/' + cityWeather.weather[0].icon + '@2x.png');
+    $('#n4').attr('src', 'https://openweathermap.org/img/wn/' + cityWeather.weather[0].icon + '@2x.png');
     return cityWeather;
 }
 //forecast weather
@@ -80,4 +84,7 @@ const futureWeatherForLoc = async (lat, lon) => {
 </div>`;
         $('#d' + inx).html(str);
     }
+    //graph call
+    drawGraph(arr);
 }
+

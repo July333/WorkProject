@@ -1,5 +1,6 @@
-@main-color: rgb(70, 137, 102);
-@second-color: rgb(200, 176, 59);
+@main-color: rgb(105, 198, 226);
+@border-color: rgb(38, 30, 75);
+@second-color: rgb(241, 239, 248);
 @base-size: 13px;
 
 * {
@@ -8,27 +9,54 @@
     font-size: @base-size;
 }
 
+body {
+    background-image: url("../images/bl.png");
+    background-color: @main-color;
+    //background-size: 100%;
+}
+
 //header
+
 header #head {
     overflow: hidden;
     padding-bottom: 0%;
 }
 
-h1 {
-    width: 75%;
+header h1 {
+    width: 65%;
     display: inline-block;
+    padding: 0px;
 }
 
-#sideIm {
+header #sideIm {
     float: right;
     width: 20%;
     max-width: 120px;
+    //opacity: 100%;
+    opacity: 0.8;
+}
+
+nav div a {
+    color: @second-color;
+    font-size: 1.2em;
+}
+
+header nav div {
+    #search {
+        font-size: 1.2em;
+        background-color: @second-color;
+    }
+
+    #inp {
+        font-size: 1.2em;
+    }
 }
 
 //card
 
 .myCard #weather {
-    // position: relative;
+    position: relative;
+    //position: absolute;
     padding: 0px;
     max-width: 560px;
 }
@@ -52,6 +80,30 @@ img {
 }
 
 //grid
+@media (max-width: 420px) {
+
+    /* smartphone */
+    .grid-container {
+        grid-template-columns: auto;
+    }
+}
+
+@media (min-width: 420px) and (max-width: 760px) {
+
+    /* tablet */
+    .grid-container {
+        grid-template-columns: auto auto;
+    }
+}
+
+@media screen and (min-width: 760px) {
+
+    /* desktop */
+    .grid-container {
+        grid-template-columns: auto auto auto auto;
+    }
+}
+
 .grid-container {
     display: grid;
     padding: 5px;
@@ -60,38 +112,35 @@ img {
 
 .grid-item {
     background-color: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(0, 0, 0, 0.8);
+    border: 1px solid @border-color;
     font-size: 30px;
     text-align: center;
 }
 
-@media (max-width: 420px) {/* smartphone */
-    .grid-container {
-        grid-template-columns: auto;
-    }
-}
 
-@media (min-width: 420px) and (max-width: 760px) {/* tablet */
-    .grid-container {
-        grid-template-columns: auto auto;
-    }
-}
-
-@media screen and (min-width: 760px) {/* desktop */
-    .grid-container {
-        grid-template-columns: auto auto auto auto;
-    }
-}
-//
+//grid content
 .cur {
     width: 68%;
     display: inline-block;
     padding: 0%;
     overflow: hidden;
 }
-.inIM{
+
+.inIM {
     padding: 0px;
 }
-.hour{
-    margin:0px;
+
+.hour {
+    margin: 0px;
+}
+//graph
+#chartContainer{
+    
+  height: 300px;
+  width: 100%;
+  visibility: hidden;
+  //margin-left: 15%
+}
+#myAbout{
+    visibility: hidden;
 }

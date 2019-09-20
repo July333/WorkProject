@@ -11,13 +11,18 @@ const getApi = async (selectedCity) => {
     $('#n2 span').text(cityWeather.main.temp);
     $('#n3 #w').text(cityWeather.weather[0].description);
     $('#n3 #wi').text(cityWeather.wind.speed+' km/h');
-    $('#n4').attr('src','http://openweathermap.org/img/wn/'+cityWeather.weather[0].icon+'@2x.png');
+    $('#n4').attr('src','https://openweathermap.org/img/wn/'+cityWeather.weather[0].icon+'@2x.png');
     return cityWeather;
 }
 $('#search').on('click', function () {
+    $("#chartContainer").css("visibility", "hidden");
+    $("section").css("visibility", "visible");
+    $("section").css("position", "relative");
+    $("#myAbout").css("visibility", "hidden");
     let city = $('#inp').val();
     getApi(city);
     futureWeather(city);
+    $('#inp').val("");
 });
 //forecast weather
 const getHisApi = async (selectedCity) => {
@@ -51,4 +56,6 @@ const futureWeather = async (selectedCity) => {
 </div>`;
         $('#d' + inx).html(str);
     }
+    //graph call
+    drawGraph(arr);
 }

@@ -3,20 +3,38 @@
   font-family: Arial, Helvetica, sans-serif;
   font-size: 13px;
 }
+body {
+  background-image: url("../images/bl.png");
+  background-color: #69c6e2;
+}
 header #head {
   overflow: hidden;
   padding-bottom: 0%;
 }
-h1 {
-  width: 75%;
+header h1 {
+  width: 65%;
   display: inline-block;
+  padding: 0px;
 }
-#sideIm {
+header #sideIm {
   float: right;
   width: 20%;
   max-width: 120px;
+  opacity: 0.8;
+}
+nav div a {
+  color: #f1eff8;
+  font-size: 1.2em;
+}
+header nav div #search {
+  font-size: 1.2em;
+  background-color: #f1eff8;
+}
+header nav div #inp {
+  font-size: 1.2em;
 }
 .myCard #weather {
+  position: relative;
   padding: 0px;
   max-width: 560px;
 }
@@ -33,17 +51,6 @@ img {
   padding: 2%;
   padding-top: 5%;
   overflow: hidden;
-}
-.grid-container {
-  display: grid;
-  padding: 5px;
-  width: 100%;
-}
-.grid-item {
-  background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(0, 0, 0, 0.8);
-  font-size: 30px;
-  text-align: center;
 }
 @media (max-width: 420px) {
   /* smartphone */
@@ -63,6 +70,17 @@ img {
     grid-template-columns: auto auto auto auto;
   }
 }
+.grid-container {
+  display: grid;
+  padding: 5px;
+  width: 100%;
+}
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid #261e4b;
+  font-size: 30px;
+  text-align: center;
+}
 .cur {
   width: 68%;
   display: inline-block;
@@ -74,4 +92,12 @@ img {
 }
 .hour {
   margin: 0px;
+}
+#chartContainer {
+  height: 300px;
+  width: 100%;
+  visibility: hidden;
+}
+#myAbout {
+  visibility: hidden;
 }
