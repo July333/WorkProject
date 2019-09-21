@@ -17,10 +17,8 @@ $(document).ready(function () {
         }
     });
 });
-$('#home').on('click', function () { 
+$('#home').on('click', function () {
     $("#chartContainer").css("visibility", "hidden");
-    $("section").css("visibility", "visible");
-    $("section").css("position", "relative");
     $("#myAbout").css("visibility", "hidden");
     getLocation(function (position) {
         const lat = position.coords.latitude;
@@ -34,6 +32,8 @@ function getLocation(callback) {
         navigator.geolocation.getCurrentPosition(callback, function () { }, {
             enableHighAccuracy: true
         });
+        $("section").css("visibility", "visible");
+        $("section").css("position", "relative");
     } else {
         alert("Geolocation is not supported by this browser.");
     }
