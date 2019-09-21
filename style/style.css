@@ -38,6 +38,14 @@ header nav div #inp {
   padding: 0px;
   max-width: 560px;
 }
+.myCard #weather #n1 {
+  font-size: 1.2em;
+}
+.myCard #weather #n1 span {
+  text-decoration: underline;
+  font-weight: bold;
+  font-size: 1.1em;
+}
 img {
   display: block;
   float: left;
@@ -81,6 +89,12 @@ img {
   font-size: 30px;
   text-align: center;
 }
+.grid-item h5 {
+  font-size: 1.025em;
+  font-family: 'Times New Roman', Times, serif;
+  font-style: italic;
+  color: #261e4b;
+}
 .cur {
   width: 68%;
   display: inline-block;
@@ -100,6 +114,8 @@ img {
 }
 #myAbout {
   visibility: hidden;
+  margin: 15%;
+  margin-top: 0%;
 }
 section {
   visibility: hidden;

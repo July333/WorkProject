@@ -59,6 +59,16 @@ header nav div {
     //position: absolute;
     padding: 0px;
     max-width: 560px;
+
+    #n1 {
+        font-size: 1.2em;
+
+        span {
+            text-decoration: underline;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+    }
 }
 
 img {
@@ -115,6 +125,13 @@ img {
     border: 1px solid @border-color;
     font-size: 30px;
     text-align: center;
+
+    h5 {
+        font-size: 1.025em;
+        font-family: 'Times New Roman', Times, serif;
+        font-style: italic;
+        color: @border-color;
+    }
 }
 
 
@@ -133,17 +150,22 @@ img {
 .hour {
     margin: 0px;
 }
+
 //graph
-#chartContainer{
-    
-  height: 300px;
-  width: 100%;
-  visibility: hidden;
-  //margin-left: 15%
-}
-#myAbout{
+#chartContainer {
+
+    height: 300px;
+    width: 100%;
     visibility: hidden;
+    //margin-left: 15%
 }
-section{
+
+#myAbout {
+    visibility: hidden;
+    margin: 15%;
+    margin-top: 0%;
+}
+
+section {
     visibility: hidden;
 }
