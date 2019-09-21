@@ -101,3 +101,6 @@ img {
 #myAbout {
   visibility: hidden;
 }
+section {
+  visibility: hidden;
+}
