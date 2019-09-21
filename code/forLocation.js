@@ -3,6 +3,9 @@ $(document).ready(function () {
     getLocation(function (position) {
         const lat = position.coords.latitude;
         const lon = position.coords.longitude;
+        //visible when geolocation is on
+         $("section").css("visibility", "visible");
+         $("section").css("position", "relative");
         getLocApi(lat, lon);
         futureWeatherForLoc(lat, lon);
         //day of the week
@@ -23,17 +26,19 @@ $('#home').on('click', function () {
     getLocation(function (position) {
         const lat = position.coords.latitude;
         const lon = position.coords.longitude;
+        //visible when geolocation is on
+         $("section").css("visibility", "visible");
+         $("section").css("position", "relative");
         getLocApi(lat, lon);
         futureWeatherForLoc(lat, lon);
     });
 });
 function getLocation(callback) {
+    //console.log(navigator.geolocation);
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(callback, function () { }, {
             enableHighAccuracy: true
         });
-        $("section").css("visibility", "visible");
-        $("section").css("position", "relative");
     } else {
         alert("Geolocation is not supported by this browser.");
     }
