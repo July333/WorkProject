@@ -8,7 +8,8 @@ $(document).ready(function () {
          $("section").css("position", "relative");
         getLocApi(lat, lon);
         futureWeatherForLoc(lat, lon);
-        //day of the week
+    });
+    //day of the week
         for (let j = 1; j < 5; j++) {
             let d = new Date();
             d.setDate(d.getDate() + j - 1);
@@ -18,7 +19,6 @@ $(document).ready(function () {
                 $('#day' + j + ' .infoM').slideToggle();
             });
         }
-    });
 });
 $('#home').on('click', function () {
     $("#chartContainer").css("visibility", "hidden");
@@ -49,6 +49,7 @@ const getLocApi = async (lat, lon) => {
         + '&units=metric&appid='
         + apiId);
     const cityWeather = await res.json();
+    name=cityWeather.name.toUpperCase();
     $('#n1 span').text(cityWeather.name.toUpperCase());
     $('#n2 span').text(cityWeather.main.temp);
     $('#n3 #w').text(cityWeather.weather[0].description);

@@ -1,12 +1,24 @@
 //variables
 const apiId = '7a330d30a698e17be279ad095370f739'; //my key
 var arr = [];
+var name='';
 //current temp by city name
+$('#search').on('click', function () {
+    $("#chartContainer").css("visibility", "hidden");
+    $("#myAbout").css("visibility", "hidden");
+    $("section").css("visibility", "visible");
+    $("section").css("position", "relative");
+    let city = $('#inp').val();
+    getApi(city);
+    futureWeather(city);
+    $('#inp').val("");
+});
 const getApi = async (selectedCity) => {
     const res = await fetch('https://api.openweathermap.org/data/2.5/weather?q='
         + selectedCity
         + '&units=metric&appid=' + apiId);
     const cityWeather = await res.json();
+    name=cityWeather.name.toUpperCase();
     $('#n1 span').text(cityWeather.name.toUpperCase());
     $('#n2 span').text(cityWeather.main.temp);
     $('#n3 #w').text(cityWeather.weather[0].description);
@@ -14,16 +26,6 @@ const getApi = async (selectedCity) => {
     $('#n4').attr('src','https://openweathermap.org/img/wn/'+cityWeather.weather[0].icon+'@2x.png');
     return cityWeather;
 }
-$('#search').on('click', function () {
-    $("#chartContainer").css("visibility", "hidden");
-    $("section").css("visibility", "visible");
-    $("section").css("position", "relative");
-    $("#myAbout").css("visibility", "hidden");
-    let city = $('#inp').val();
-    getApi(city);
-    futureWeather(city);
-    $('#inp').val("");
-});
 //forecast weather
 const getHisApi = async (selectedCity) => {
     const res = await fetch('https://api.openweathermap.org/data/2.5/forecast?q='
