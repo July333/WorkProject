@@ -4,21 +4,21 @@ $(document).ready(function () {
         const lat = position.coords.latitude;
         const lon = position.coords.longitude;
         //visible when geolocation is on
-         $("section").css("visibility", "visible");
-         $("section").css("position", "relative");
+        $("section").css("visibility", "visible");
+        $("section").css("position", "relative");
         getLocApi(lat, lon);
         futureWeatherForLoc(lat, lon);
     });
     //day of the week
-        for (let j = 1; j < 5; j++) {
-            let d = new Date();
-            d.setDate(d.getDate() + j - 1);
-            $('#day' + j + ' .myB').before('<h5>' + d.toLocaleString("en-US", { weekday: 'long' }) + ' ' + d.getDate() + '/' + d.getMonth() + ' </h5>');
-            //more info
-            $('#day' + j + ' .myB').on('click', function () {
-                $('#day' + j + ' .infoM').slideToggle();
-            });
-        }
+    for (let j = 1; j < 5; j++) {
+        let d = new Date();
+        d.setDate(d.getDate() + j - 1);
+        $('#day' + j + ' .myB').before('<h5>' + d.toLocaleString("en-US", { weekday: 'long' }) + ' ' + d.getDate() + '/' + d.getMonth() + ' </h5>');
+        //more info
+        $('#day' + j + ' .myB').on('click', function () {
+            $('#day' + j + ' .infoM').slideToggle();
+        });
+    }
 });
 $('#home').on('click', function () {
     $("#chartContainer").css("visibility", "hidden");
@@ -27,8 +27,8 @@ $('#home').on('click', function () {
         const lat = position.coords.latitude;
         const lon = position.coords.longitude;
         //visible when geolocation is on
-         $("section").css("visibility", "visible");
-         $("section").css("position", "relative");
+        $("section").css("visibility", "visible");
+        $("section").css("position", "relative");
         getLocApi(lat, lon);
         futureWeatherForLoc(lat, lon);
     });
@@ -49,7 +49,7 @@ const getLocApi = async (lat, lon) => {
         + '&units=metric&appid='
         + apiId);
     const cityWeather = await res.json();
-    name=cityWeather.name.toUpperCase();
+    name = cityWeather.name.toUpperCase();
     $('#n1 span').text(cityWeather.name.toUpperCase());
     $('#n2 span').text(cityWeather.main.temp);
     $('#n3 #w').text(cityWeather.weather[0].description);
@@ -71,16 +71,25 @@ const futureWeatherForLoc = async (lat, lon) => {
     let date = arr[0].dt_txt;
     date = date.split(' ');
     let place = date[1].split(':')[0];
-    place /= 6;
     let i = 0;
-    if ((place % Math.ceil(place)) != 0) {
-        i++;
-        place = Math.ceil(place);
+    let inx = 1;
+    if (place == 00) {
+        i += 2;
     }
-    let inx;
+    if (place == 03 || place == 09 || place == 15 || place == 21) {
+        i++;
+    }
+    if(place == 09 || place == 12){
+        inx=2;
+    }
+    if(place == 15 || place == 18){
+        inx=3;
+    }
+    if(place == 21){
+        inx=4;
+    }
     let str = '';
     for (i; i < arr.length - 6; i = i + 2) {
-        inx = Math.floor(i / 2) + place;
         str = `<div class="inIM col-auto"><img src="https://openweathermap.org/img/wn/${arr[i].weather[0].icon}@2x.png" alt="image" class="inIM img-responsive"></div>
         <div class="col-auto cur">
 <strong>${arr[i].dt_txt.split(' ')[1]}</strong>
@@ -89,6 +98,7 @@ const futureWeatherForLoc = async (lat, lon) => {
 <br />The wind speed is: <strong>${arr[i].wind.speed} km/h</strong>
 </div>`;
         $('#d' + inx).html(str);
+        inx++;
     }
     //graph call
     drawGraph(arr);
