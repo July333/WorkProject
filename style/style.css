@@ -6,6 +6,7 @@
 body {
   background-image: url("../images/bl.jpg");
   background-color: #69c6e2;
+  background-size: cover;
 }
 header #head {
   overflow: hidden;
